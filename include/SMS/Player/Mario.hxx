@@ -1251,7 +1251,7 @@ public:
     u32 _3A0;
     u32 _3A4;                   // unknown
     M3UModelMario *mModelData;  // 0x03A8
-    u32 _3AC;                   // unknown
+    J3DModelData *mBodyModelData;                   // unknown
     J3DModel *mHandModel2R;
     J3DModel *mHandModel2L;
     J3DModel *mHandModel3R;

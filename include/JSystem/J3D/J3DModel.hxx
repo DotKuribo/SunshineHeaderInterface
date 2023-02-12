@@ -13,7 +13,7 @@
 class J3DModelHierarchy;
 class J3DNode;
 
-struct UnkStruct28Tev {
+struct J3DMaterial {
     u32 _00[0x28 / 4];
     J3DTevBlock *mTevBlock;
 };
@@ -47,7 +47,7 @@ public:
     u16 _1C;
     J3DJoint **mJoints;
     u16 mJointNum;
-    UnkStruct28Tev **mStages;  // ?
+    J3DMaterial **mStages;  // ?
     u16 mStageNum;             // ?
     JUTNameTab **mJointNames;  // JUTNameTab (joints)
     u16 mJointNameNum;
