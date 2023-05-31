@@ -52,8 +52,12 @@ public:
 
     virtual void update();
 
-    const TNerveBase<T> *getLatestNerve();
-    void pushNerve(const TNerveBase<T> *nerve);
+    const TNerveBase<T> *getLatestNerve() {
+        return mNerveCurrent;
+    }
+    void pushNerve(const TNerveBase<T> *nerve) {
+        mNerveStack.push(nerve);
+    }
     void setNerve(const TNerveBase<T> *nerve) {
         if (mNerveCurrent)
             mNervePrevious = mNerveCurrent;

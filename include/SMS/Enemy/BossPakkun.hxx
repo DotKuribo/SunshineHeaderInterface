@@ -9,6 +9,65 @@
 #include <SMS/Enemy/SpineEnemy.hxx>
 #include <SMS/Manager/EnemyManager.hxx>
 
+
+struct TBossPakkunParams : public TSpineEnemyParams {
+    TBossPakkunParams(const char* prm)
+        : TSpineEnemyParams(prm),
+        SMS_TPARAM_INIT(mSLWaitFrameStg0, 400),
+        SMS_TPARAM_INIT(mSLWaterMarkLimit, 600),
+        SMS_TPARAM_INIT(mSLSwingLength, 600.0f),
+        SMS_TPARAM_INIT(mSLPollBallStampScale, 1.0f),
+        SMS_TPARAM_INIT(mSLTumbleTime, 0x960),
+        SMS_TPARAM_INIT(mSLAnmBlendTime0, 0x3c),
+        SMS_TPARAM_INIT(mSLFlySpeed, 5.0f),
+        SMS_TPARAM_INIT(mSLPivotSpeed, 0.7f),
+        SMS_TPARAM_INIT(mSLPivotSpeedAware, 1.5f),
+        SMS_TPARAM_INIT(mSLVomitAnmRate, 0.6f),
+        SMS_TPARAM_INIT(mSLHeadHomingLimit, 30.0f),
+        SMS_TPARAM_INIT(mSLDamageAngle, 180.0f),
+        SMS_TPARAM_INIT(mSLTornadoProp, 0.4f),
+        SMS_TPARAM_INIT(mSLTornadoSpeed, 2.0f),
+        SMS_TPARAM_INIT(mSLTornadoRollSpeed, 0.06f),
+        SMS_TPARAM_INIT(mSLTornadoMoveInit, 10000.0f),
+        SMS_TPARAM_INIT(mSLTornadoMoveInc, 1.0f),
+        SMS_TPARAM_INIT(mSLTornadoMoveLimit, 10720.0f),
+        SMS_TPARAM_INIT(mSLWaterHitTimer, 0x14),
+        SMS_TPARAM_INIT(mSLHoverTimer, 0x4b0),
+        SMS_TPARAM_INIT(mSLPollBallRange, 10000.0f),
+        SMS_TPARAM_INIT(mSLPollBallSpeed, 20.0f),
+        SMS_TPARAM_INIT(mSLPollBallFront, 1000.0f)
+    {
+        load(prm);
+    }
+
+    TParamRT<u32> mSLWaitFrameStg0; // 0xa8
+    TParamRT<u32> mSLWaterMarkLimit; // 0xbc
+    TParamRT<f32> mSLSwingLength; // 0xd0
+    TParamRT<f32> mSLPollBallStampScale; // 0xe4
+    TParamRT<u32> mSLTumbleTime; // 0xf8
+    TParamRT<u32> mSLAnmBlendTime0; // 0x10c
+    TParamRT<f32> mSLFlySpeed; // 0x120
+    TParamRT<f32> mSLPivotSpeed; // 0x134
+    TParamRT<f32> mSLPivotSpeedAware; // 0x148
+    TParamRT<f32> mSLVomitAnmRate; // 0x15c
+    TParamRT<f32> mSLHeadHomingLimit; // 0x170
+    TParamRT<f32> mSLDamageAngle; // 0x184
+    TParamRT<f32> mSLTornadoProp; // 0x198
+    TParamRT<f32> mSLTornadoSpeed; // 0x1ac
+    TParamRT<f32> mSLTornadoRollSpeed; // 0x1c0
+    TParamRT<f32> mSLTornadoMoveInit; // 0x1d4
+    TParamRT<f32> mSLTornadoMoveInc; // 0x1e8
+    TParamRT<f32> mSLTornadoMoveLimit; // 0x1fc
+    TParamRT<u32> mSLWaterHitTimer; // 0x210
+    TParamRT<u32> mSLHoverTimer; // 0x224
+    TParamRT<f32> mSLPollBallRange; // 0x238
+    TParamRT<f32> mSLPollBallSpeed; // 0x24c
+    TParamRT<f32> mSLPollBallFront; // 0x260
+};
+
+
+class TBPHeadHit;
+class TBPNavel;
 class TBPTornado;
 class TBPPolDrop;
 
@@ -35,21 +94,22 @@ public:
     TBPPolDrop *mPollutionDrop;  // 0x0158
     void *TBPVomit;              // 0x015C
     TBPTornado *mTornado;        // 0x0160
-    void *TNavel;                // 0x0164
-    void *THeadHit;              // 0x0168
+    TBPHeadHit* mHeadHit;        // 0x0164
+    TBPNavel* mNavel;            // 0x0168
     s8 _02;                      // 0x016C
-    u32 _03[0x18 / 3];           // 0x0170
+    u32 _03[0xc / 4];           // 0x0170
     s8 _04;                      // 0x017C
     MActor *peteyMActorData;     // 0x0180
     f32 _06;                     // 0x0184
     u32 _07;                     // 0x0188
-    void *TWaterEmitInfo;        // 0x018C
+    TWaterEmitInfo *mWaterEmitInfo;// 0x018C
     s8 _08;                      // 0x0190
-    u32 _0c[6];                  // 0x01B8
+    u32 _0c[0x24 / 4];           // 0x0194 - 0x01B4
     u32 _09;                     // 0x01B8
     s8 _10;                      // 0x01BC
     u32 _11;                     // 0x01C0
     s8 _12;                      // 0x01C4
+    s8 _12_padding;              // 0x01C8 - Padding?
     u32 _13;                     // 0x01CC
 };
 
@@ -85,6 +145,33 @@ public:
     static TNerveBase<TLiveActor> *theNerve();
 };
 
+
+class TBPHeadHit : public THitActor {
+public:
+    TBPHeadHit(TBossPakkun* parentPakkun, const char* name) : THitActor(name) {
+        mParent = parentPakkun;
+        initHitActor(0x8000010, 5, -0x7f000000, 300.0f, 500.0f, 300.0f, 500.0f);
+        mObjectType = mObjectType & 0xfffffffe;
+    }
+    virtual void perform(u32, JDrama::TGraphics*) override;
+    virtual bool receiveMessage(THitActor* sender, u32 msg) override;
+
+    TBossPakkun* mParent;             // 0x0068
+};
+
+
+class TBPNavel : public THitActor {
+public:
+    TBPNavel(TBossPakkun* parentPakkun, const char * name) : THitActor(name) {
+        mParent = parentPakkun;
+        initHitActor(0x8000011, 1, -0x80000000, 200.0f, 300.0f, 200.0f, 300.0f);
+    }
+    virtual void perform(u32, JDrama::TGraphics*) override;
+    virtual bool receiveMessage(THitActor* sender, u32 msg) override;
+
+    TBossPakkun* mParent;             // 0x0068
+};
+
 class TBPPolDrop : public THitActor {
 public:
     TBPPolDrop(TBossPakkun *parentPakkun, char *name);
@@ -105,9 +192,9 @@ public:
     virtual void perform(u32, JDrama::TGraphics *) override;
 
     TBossPakkun *mParent;         // 0x68
-    TMActorKeeper *mActorKeeper;  // 0x6C
+    MActor *mActorData;  // 0x6C
     TVec3f mTargetPos;            // 0x70
-    u32 _74[0x20 / 4];
+    u32 _74[0x18 / 4];
     f32 _94;  // 0x94
     u32 _98;  // 0x98
 };

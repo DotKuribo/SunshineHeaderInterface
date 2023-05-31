@@ -8,6 +8,9 @@ enum EnumCamShakeMode {
     UnknownShake5  = 0x5,
     UnknownShake8  = 0x8,
     UnknownShake9  = 0x9,
+    UnknownShakeE  = 0xE,
+    UnknownShakeF  = 0xF,
+    UnknownShake10 = 0x10,
     UnknownShake11 = 0x11,
     UnknownShake18 = 0x18,
     UnknownShake27 = 0x27

@@ -14,6 +14,6 @@ public:
 
     TRailNode *mRailNode;
     u32 _04;
-    f32 _08;
+    u32 _08;
     u32 _0C;
 };
