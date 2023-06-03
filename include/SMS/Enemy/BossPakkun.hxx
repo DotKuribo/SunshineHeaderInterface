@@ -99,7 +99,7 @@ public:
     s8 _02;                      // 0x016C
     u32 _03[0xc / 4];           // 0x0170
     s8 _04;                      // 0x017C
-    MActor *peteyMActorData;     // 0x0180
+    MActor *mActorData;     // 0x0180
     f32 _06;                     // 0x0184
     u32 _07;                     // 0x0188
     TWaterEmitInfo *mWaterEmitInfo;// 0x018C
