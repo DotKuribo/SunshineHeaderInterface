@@ -22,6 +22,8 @@
 #define MESSAGE_MARIO_BURN 10
 
 #define OBJECT_ID_MARIO 0x80000001
+#define OBJECT_ID_WATER_SPRAY 0x1000001
+#define OBJECT_ID_POINK 0x100000D
 
 class TMario : public TTakeActor, public TDrawSyncCallback {
 public:
