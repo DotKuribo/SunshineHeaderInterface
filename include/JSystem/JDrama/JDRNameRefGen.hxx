@@ -17,6 +17,7 @@ namespace JDrama {
 
     private:
         TNameRef *mRootName;
+        static TNameRefGen *instance;
     };
 
 }  // namespace JDrama

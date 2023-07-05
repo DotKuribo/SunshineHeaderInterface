@@ -7,7 +7,7 @@
 
 namespace JSystem {
 
-#if __cplusplus > 201703L
+#if __cplusplus > 201402L
     [[__nodiscard__]] constexpr bool is_constant_evaluated() noexcept {
         return __builtin_is_constant_evaluated();
     }

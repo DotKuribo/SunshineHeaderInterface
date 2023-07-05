@@ -386,7 +386,7 @@ namespace JGadget {
 
         iterator erase(const_iterator start, const_iterator end) {
             iterator iter = iterator(start);
-            while (iter != end) {
+            while (iter != iterator(end)) {
                 iter = erase(iter);
             }
             return iter;
@@ -580,7 +580,6 @@ namespace JGadget {
             for (auto i = begin(); i != end(); ++i) {
                 if (*i == value) {
                     i = erase(i);
-                    removed += 1;
                 }
             }
         }
@@ -589,7 +588,6 @@ namespace JGadget {
             for (auto i = begin(); i != end(); ++i) {
                 if (p(*i)) {
                     i = erase(i);
-                    removed += 1;
                 }
             }
         }
@@ -611,14 +609,25 @@ namespace JGadget {
             TNode_ *prev = current->mPrev;
 
             TNode_ *transfer = sp.mNode;
-            transfer->mNext = current;
-            transfer->mPrev = prev;
-
             if (!transfer)
                 return;
 
-            current->mPrev = newNode;
-            prev->mNext = newNode;
+            if (transfer == other.mBegin) {
+                other.mBegin = transfer->mNext;
+			} else if (transfer == other.mEnd) {
+				other.mEnd = transfer->mPrev;
+            } else {
+                TNode_ *transferPrev = transfer->mPrev;
+                TNode_ *transferNext = transfer->mNext;
+                transferPrev->mNext = transferNext;
+                transferNext->mPrev = transferPrev;
+            }
+
+            transfer->mNext = current;
+            transfer->mPrev = prev;
+
+            current->mPrev = transfer;
+            prev->mNext = transfer;
 
             mSize += 1;
             other.mSize -= 1;

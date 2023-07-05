@@ -36,3 +36,5 @@ public:
     f32 _74;
     f32 _78;
 };
+
+extern TItemManager *gpItemManager;

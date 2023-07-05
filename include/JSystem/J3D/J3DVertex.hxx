@@ -53,6 +53,6 @@ public:
     ~J3DDrawMtxData();
 
     u16 _0;
-    u32 _4;
+    u16 mJointCount;
     u32 _8;
 };

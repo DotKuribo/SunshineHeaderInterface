@@ -58,7 +58,7 @@ public:
     void filledInitData(CARDFileInfo *);
     void format();
     TCardBookmarkInfo *getBookmarkInfos_();
-    void getBookmarkInfos();
+    void getBookmarkInfos(TCardBookmarkInfo *);
     s32 getLastStatus();
     void getOptionReadStream(JSUMemoryInputStream *);
     void getOptionWriteStream(JSUMemoryOutputStream *);

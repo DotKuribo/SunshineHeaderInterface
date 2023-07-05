@@ -53,7 +53,7 @@ public:
     TMarioGamePad *mGamePads[4];                                            // 0x0020
     TNameRefPtrAryT<TNameRefAryT<TScenarioArchiveName>> *mStageArchiveAry;  // 0x0030
     TSMSFader *mFader;                                                      // 0x0034
-    u32 _38;
+    u8 mCurrentSaveBlock;
     u32 _3C;
     JKRHeap *mCurrentHeap;                                                  // 0x0040
     u16 _44;

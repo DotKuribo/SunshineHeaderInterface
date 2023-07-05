@@ -42,7 +42,7 @@ public:
     u16 _1C;
     J3DJoint **mJoints;
     u16 mJointNum;
-    J3DTevStage **mStages;  // ?
+    J3DTevStage **mStages;     // ?
     u16 mStageNum;             // ?
     JUTNameTab **mJointNames;  // JUTNameTab (joints)
     u16 mJointNameNum;
@@ -56,6 +56,7 @@ public:
     u32 _90;
     u32 _94;
     J3DDrawMtxData mDrawMtxData;  // _98
+    u16 *mCurrentJointIndex;
     u32 _A4;
     u32 _A8;
     u32 _AC;
@@ -94,7 +95,7 @@ public:
     Mtx mBaseMtx;
     u32 _50;
     u32 _54;
-    Mtx *mJointArray;
+    Mtx *mJointArray;  // First is the result of concatenations
     u32 _5C;
     u32 _60;
     u32 _64;
@@ -102,6 +103,7 @@ public:
     u32 _6C;
     u32 _70;
     u32 _74;
+    u32 _78;
     u32 _7C;
     u32 _80;  // display list
     u32 _84;

@@ -19,9 +19,9 @@ namespace JSystem {
             ::new (const_cast<void *>(static_cast<const volatile void *>(
                 JSystem::addressof(*d_first)))) typename _ForwardIt::value_type(*first);
 #elif __cplusplus >= 201103L
-            ::new (static_cast<void *>(JSystem::addressof(*d_first)) typename _ForwardIt::value_type(*first);
+            ::new (static_cast<void *>(JSystem::addressof(*d_first))) typename _ForwardIt::value_type(*first);
 #else
-            ::new (static_cast<void *>(&*d_first) typename _ForwardIt::value_type(*first);
+            ::new (static_cast<void *>(&*d_first)) typename _ForwardIt::value_type(*first);
 #endif
         }
         return first;
@@ -35,7 +35,7 @@ namespace JSystem {
             ::new (const_cast<void *>(static_cast<const volatile void *>(
                 JSystem::addressof(*d_first)))) typename _ForwardIt::value_type(*first);
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*d_first)) typename _ForwardIt::value_type(*first);
+            ::new (static_cast<void *>(JSystem::addressof(*d_first))) typename _ForwardIt::value_type(*first);
 #endif
         }
         return first;
@@ -50,9 +50,9 @@ namespace JSystem {
                 const_cast<void *>(static_cast<const volatile void *>(JSystem::addressof(*first))))
                 typename _ForwardIt::value_type(data);
 #elif __cplusplus >= 201103L
-            ::new (static_cast<void *>(JSystem::addressof(*first)) typename _ForwardIt::value_type(data);
+            ::new (static_cast<void *>(JSystem::addressof(*first))) typename _ForwardIt::value_type(data);
 #else
-            ::new (static_cast<void *>(&*first) typename _ForwardIt::value_type(data);
+            ::new (static_cast<void *>(&*first)) typename _ForwardIt::value_type(data);
 #endif
         }
         return first;
@@ -66,7 +66,7 @@ namespace JSystem {
             ::new (const_cast<void *>(
                 static_cast<const volatile void *>(JSystem::addressof(*first)))) _T(data);
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*first)) _T(data);
+            ::new (static_cast<void *>(JSystem::addressof(*first))) _T(data);
 #endif
         }
         return first;
@@ -90,7 +90,7 @@ namespace JSystem {
                 static_cast<const volatile void *>(JSystem::addressof(*d_first))))
                 typename _ForwardIt::value_type(JSystem::move(*first));
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*d_first)) typename _ForwardIt::value_type(JSystem::move(*first));
+            ::new (static_cast<void *>(JSystem::addressof(*d_first))) typename _ForwardIt::value_type(JSystem::move(*first));
 #endif
         }
         return first;
@@ -104,7 +104,7 @@ namespace JSystem {
                 static_cast<const volatile void *>(JSystem::addressof(*d_first))))
                 typename _ForwardIt::value_type(JSystem::move(*first));
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*d_first)) typename _ForwardIt::value_type(JSystem::move(*first));
+            ::new (static_cast<void *>(JSystem::addressof(*d_first))) typename _ForwardIt::value_type(JSystem::move(*first));
 #endif
         }
         return first;
@@ -118,7 +118,7 @@ namespace JSystem {
                 const_cast<void *>(static_cast<const volatile void *>(JSystem::addressof(*first))))
                 typename _ForwardIt::value_type;
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*first)) typename _ForwardIt::value_type;
+            ::new (static_cast<void *>(JSystem::addressof(*first))) typename _ForwardIt::value_type;
 #endif
         }
         return first;
@@ -132,7 +132,7 @@ namespace JSystem {
                 const_cast<void *>(static_cast<const volatile void *>(JSystem::addressof(*first))))
                 typename _ForwardIt::value_type;
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*first)) typename _ForwardIt::value_type;
+            ::new (static_cast<void *>(JSystem::addressof(*first))) typename _ForwardIt::value_type;
 #endif
         }
         return first;
@@ -146,7 +146,7 @@ namespace JSystem {
                 const_cast<void *>(static_cast<const volatile void *>(JSystem::addressof(*first))))
                 typename _ForwardIt::value_type;
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*first)) typename _ForwardIt::value_type;
+            ::new (static_cast<void *>(JSystem::addressof(*first))) typename _ForwardIt::value_type;
 #endif
         }
         return first;
@@ -160,7 +160,7 @@ namespace JSystem {
                 const_cast<void *>(static_cast<const volatile void *>(JSystem::addressof(*first))))
                 typename _ForwardIt::value_type();
 #else
-            ::new (static_cast<void *>(JSystem::addressof(*first)) typename _ForwardIt::value_type();
+            ::new (static_cast<void *>(JSystem::addressof(*first))) typename _ForwardIt::value_type();
 #endif
         }
         return first;
