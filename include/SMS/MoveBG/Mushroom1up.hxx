@@ -1,7 +1,10 @@
 #pragma once
 
 #include <Dolphin/types.h>
+#include <JSystem/JDrama/JDRGraphics.hxx>
+#include <JSystem/JSupport/JSUMemoryStream.hxx>
 #include <SMS/MapObj/MapObjBase.hxx>
+#include <SMS/Strategic/HitActor.hxx>
 
 class TMushroom1up : public TMapObjBase {
 public:
