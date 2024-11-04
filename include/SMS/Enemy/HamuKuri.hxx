@@ -102,7 +102,7 @@ public:
 
 class THamuKuriManager : public TSmallEnemyManager {
 public:
-    THamuKuriManager(const char *, int isDemoMode);
+    THamuKuriManager(const char *);
     virtual ~THamuKuriManager();
 
     virtual void createModelData() override;
