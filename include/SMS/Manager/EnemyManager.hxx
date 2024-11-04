@@ -44,6 +44,8 @@ public:
     void setSharedFlags();
     void updateAnmSoundShared();
 
+    const bool mIsCopyAninMtx;
+
     TSpineEnemyParams *mEnemyParams;  // 0
     f32 _3C;                          // 1.0f
     u32 _40;                          // 0
