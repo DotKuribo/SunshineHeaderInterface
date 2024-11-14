@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Dolphin/types.h>
-#include <EnemyManager.hxx>
+#include <SMS/Manager/EnemyManager.hxx>
 #include <SMS/Enemy/SpineEnemy.hxx>
 #include <SMS/System/Params.hxx>
 
@@ -68,6 +68,7 @@ public:
     virtual void reset() override;
     virtual void moveObject() override;
     virtual void updateAnmSound() override;
+    virtual void loadAfter() override;
 
     virtual void attackToMario();
     virtual void behaveToWater(THitActor *);
@@ -113,9 +114,8 @@ public:
     u32 isInhibitedForceMove();
     u32 isMarioInWater() const;
     void jumpBehavior();
-    void loadAfter();
-    const bool mIsAmpPolluter;
-    const bool mIsPolluter;
+   /* const bool mIsAmpPolluter;
+    const bool mIsPolluter;*/
 
     u32 _150;
     f32 _154;
@@ -146,18 +146,18 @@ public:
     virtual void createEnemies(int) override;
     virtual void load(JSUMemoryInputStream &) override;
     virtual void createModelData() override;
+    virtual void loadAfter() override;
 
     virtual int getHolder(int);
     virtual void initSetEnemies();
-    virtual void loadAfter();
 
-    const f32 mBlockMoveSpeed;
+    /*const f32 mBlockMoveSpeed;
     const f32 mBlockWaitMoveY;
     const u32 mBlockWaitTime;
     const f32 mBlockXZScale;
     const f32 mBlockYScale;
     const u32 mChangeBlockTime;
-    const u8 mTestJuiceType;
+    const u8 mTestJuiceType;*/
 
     u32 _54;  // code executed after adding enemies
     u32 _58;  // something texStamp Replated

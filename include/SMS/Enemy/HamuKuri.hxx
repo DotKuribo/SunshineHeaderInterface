@@ -57,7 +57,7 @@ public:
     virtual bool isCollideMove(THitActor *) override;
     virtual u32 isFindMario(float) override;
     virtual u32 isHitValid(u32) override;  //(ulong)
-    void bool isResignationAttack() override;
+    virtual bool isResignationAttack() override;
     virtual void moveObject() override;
     virtual void reset() override;
     virtual void setAfterDeadEffect() override;
@@ -71,13 +71,13 @@ public:
     virtual void walkBehavior(int, float) override;
 
     u8 canDoJitabata();  // uint
-    void forceRoll(JGeometry::TVec3<float><float> &, bool);
+    void forceRoll(JGeometry::TVec3<f32> &, bool);
     void jumpToSearchActor();
     void makeCapFly(TMapObjBase *);
-    f32 mCapGravityY;
+    /*f32 mCapGravityY;
     f32 mCapSpeed;
     f32 mLandAnimFrameNum;
-    f32 mVGenerateGravityY;
+    f32 mVGenerateGravityY;*/
     void onHaveCap();
     void selectCapHolder();
     void setBehaviour();
@@ -105,18 +105,18 @@ public:
     THamuKuriManager(const char *);
     virtual ~THamuKuriManager();
 
+    virtual THamuKuri *createEnemyInstance() override;
     virtual void createModelData() override;
     virtual void load(JSUMemoryInputStream &) override;
     virtual void loadAfter() override;
-    virtual void perform(u32, JDrama::TGraphics *);
+    virtual void perform(u32, JDrama::TGraphics *) override;
 
     void checkSerialKill();
-    void createAnmData();
-    THamuKuri createEnemyInstance();
+    virtual void createAnmData() override;
     void requestSerialKill(THamuKuri *);
     void setSearchHamuKuri();
 
-    const f32 mSearchActSw;
+    /*const f32 mSearchActSw;*/
 
     u32 _60;  // Something to do with 1up
     u32 _64;  // Something to do with 1up

@@ -31,7 +31,7 @@ public:
     virtual void reset() override;
 
     virtual void behaveToFindMario();
-    void bool isResignationAttack();
+    virtual bool isResignationAttack();
     virtual void walkBehavior(int, float);
 
     u32 initialGraphNode();
