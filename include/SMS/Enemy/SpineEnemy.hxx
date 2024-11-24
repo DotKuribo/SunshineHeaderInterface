@@ -64,7 +64,7 @@ public:
     void walkToCurPathNode(f32, f32, f32);
     void zigzagToCurPathNode(f32, f32, f32, f32);
 
-    u32 _F4;
+    THitActor* mTarget;
     f32 _F8;
     f32 _FC;
     f32 _100;

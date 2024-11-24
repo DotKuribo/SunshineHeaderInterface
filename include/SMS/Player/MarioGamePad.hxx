@@ -55,9 +55,16 @@ public:
     struct {
         u16 _00         : 8;
         bool mDisable   : 1;
-        u8 _01          : 5;
+        bool _01        : 1;
+        bool _02        : 1;
+        bool _03        : 1;
+        bool mIsTalking : 1;
+        bool _05        : 1;
+        bool _06        : 1;
+        bool _07        : 1;
+        bool _08        : 1;
         bool mReadInput : 1;
-        u8 _02          : 1;
+        u8 _09          : 1;
     } mState;  // 0x00E2
 
     u16 _E4;
