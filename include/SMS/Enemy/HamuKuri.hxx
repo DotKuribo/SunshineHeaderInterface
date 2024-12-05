@@ -87,7 +87,7 @@ public:
     
 
     f32 _194;
-    u32 mhasCapOn; // 0x198
+    u32 mHasCapOn; // 0x198
     u32 _19C; // int
     u8 _1A0;
     u8 _1A1;
