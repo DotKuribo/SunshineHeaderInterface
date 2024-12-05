@@ -54,9 +54,9 @@ public:
     virtual Mtx44 *getTakingMtx() override;
     virtual void init(TLiveManager *) override;
     virtual void initAttacker(THitActor *) override;
-    virtual bool isCollideMove(THitActor *) override;
-    virtual u32 isFindMario(float) override;
-    virtual u32 isHitValid(u32) override;  //(ulong)
+    virtual bool isCollidMove(THitActor *) override;
+    virtual u32 isFindMario(f32) override;
+    virtual bool isHitValid(u32) override;  //(ulong)
     virtual bool isResignationAttack() override;
     virtual void moveObject() override;
     virtual void reset() override;
@@ -68,9 +68,13 @@ public:
     virtual void setRunAnm() override;
     virtual void setWaitAnm() override;
     virtual void setWalkAnm() override;
-    virtual void walkBehavior(int, float) override;
+    virtual void walkBehavior(int, f32) override;
 
-    u8 canDoJitabata();  // uint
+    virtual void setRollAnm();
+    virtual void setCrashAnm();
+    virtual u8 canDoJitabata();  // uint
+    virtual void onHaveCap();
+
     void forceRoll(JGeometry::TVec3<f32> &, bool);
     void jumpToSearchActor();
     void makeCapFly(TMapObjBase *);
@@ -78,27 +82,39 @@ public:
     f32 mCapSpeed;
     f32 mLandAnimFrameNum;
     f32 mVGenerateGravityY;*/
-    void onHaveCap();
     void selectCapHolder();
     void setBehaviour();
-    void setCrashAnm();
-    void setRollAnm();
+    
 
     f32 _194;
-    f32 _198;
-    f32 _19C;
+    u32 hasCapOn; // 0x198
+    u32 _19C; // int
     u8 _1A0;
     u8 _1A1;
     u8 _1A2;
     u8 _1A3;
     u8 _1A4;
     u8 _1A5;
-    u8 _1A6;  // padding?
-    u8 _1A7;  // padding?
-    f32 _1E0;
-    f32 _1F0;
-    f32 _1F8;
+    u8 _1A6; //padding?
+    u8 _1A7; //padding?
+    u32 _1A8;  // padding?
+
+    u32 _1AC[0x34 / 4]; // unknown
+
+    u32 _1E0;
+
+    u32 _1E4[0xC / 4]; // Unknown
+
+    u32 _1F0;
+    u32 _1F4; //TNerveWalkerGenerate*
+    u32 _1F8;
+
+    u32 _1FC; // Unknown
+
+    TVec3f _200;  // 0x200 - 0x20B, detah particle related?
 };
+
+extern THamuKuri *hamukurianm_bastable;
 
 class THamuKuriManager : public TSmallEnemyManager {
 public:
@@ -110,9 +126,9 @@ public:
     virtual void load(JSUMemoryInputStream &) override;
     virtual void loadAfter() override;
     virtual void perform(u32, JDrama::TGraphics *) override;
+    virtual void createAnmData() override;
 
     void checkSerialKill();
-    virtual void createAnmData() override;
     void requestSerialKill(THamuKuri *);
     void setSearchHamuKuri();
 

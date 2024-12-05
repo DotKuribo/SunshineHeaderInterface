@@ -37,6 +37,7 @@ public:
     virtual bool receiveMessage(THitActor *, u32) override;
     virtual void init(TLiveManager *) override;
     virtual void calcRootMatrix() override;
+
     virtual void reset();
     virtual void resetToPosition(const TVec3f &);
     virtual void resetSRTV(const TVec3f &, const TVec3f &, const TVec3f &, const TVec3f &);
@@ -76,7 +77,7 @@ public:
     u32 _118;
     u32 *_11C;  // array
     u32 _120;
-    TGraphTracer *mGraphTracer;
+    TGraphTracer *mGraphTracer; // _124
     u16 _128;
     u16 _12A;  // padding?
     f32 _12C;

@@ -31,9 +31,10 @@ public:
     virtual void reset() override;
 
     virtual void behaveToFindMario();
+    virtual void walkBehavior(int, f32);
     virtual bool isResignationAttack();
-    virtual void walkBehavior(int, float);
+    virtual void initialGraphNode();
 
-    u32 initialGraphNode();
-    u8 isReachedToGoalXZ();
+    
+    bool isReachedToGoalXZ();
 };

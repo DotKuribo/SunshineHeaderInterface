@@ -59,7 +59,7 @@ public:
 
     TLiveManager *mLiveManager;  // 0x0070
     MActor *mActorData;          // 0x0074
-    TMActorKeeper *mActorKeeper;
+    TMActorKeeper *mActorKeeper; // 0x0078
     u16 mActorIndex;       // _7C
     MAnmSound *mAnmSound;  // _80
     char *mBasName;        // _84
@@ -101,5 +101,5 @@ public:
             u32 _06             : 3;
             bool mIsObjDead     : 1;
         } asFlags;
-    } mStateFlags;
+    } mStateFlags; // _F0
 };
