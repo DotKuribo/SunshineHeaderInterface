@@ -72,8 +72,8 @@ public:
     s32 setup(JDrama::TDisplay *, TMarioGamePad **, u8 areaID, u8 episodeID);
 
     TMarioGamePad **mGamePads;
-    TPerformList *mPerformListGX;
-    TPerformList *mPerformListSilhouette;
+    TPerformList *mPerformListGX;          // 0x001c
+    TPerformList *mPerformListSilhouette;  // 0x0020
     TPerformList *mPerformListGXPost;      // 0x0024
     TPerformList *mPerformListMovement;    // 0x0028
     TPerformList *mPerformListCalcAnim;    // 0x002C

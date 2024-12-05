@@ -18,7 +18,7 @@ public:
 
     void calcPointInCubeRatio(const Vec &, s32, f32 *, f32 *, f32 *) const;
     s32 getDataNo(s32) const;
-    s32 getInCubeNo(const Vec &pos) const;
+    u32 getInCubeNo(const Vec &pos) const;
     bool isInCube(const Vec &pos, s32) const;
 
     template <typename CubeT>
@@ -30,6 +30,7 @@ public:
     u8 mCubeMax;
     void *mCubeInfo;
     const char *mCubeKey;
+    u32 mCurrentCube;
 };
 
 extern TCubeManagerBase *gpCubeMirror;

@@ -12,8 +12,8 @@ public:
     virtual void createModelData() override;
 
     u32 getObjNumWithActorType(u32) const;
-    void makeObjAppear(f32, f32, f32, u32, bool);
-    void makeObjAppear(u32);
+    TLiveActor *makeObjAppear(f32, f32, f32, u32, bool);
+    TLiveActor *makeObjAppear(u32);
     void makeObjAppeared(u32);
 
     static u32 getActorTypeByEventID(u32);
