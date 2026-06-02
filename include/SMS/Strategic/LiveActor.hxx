@@ -17,7 +17,6 @@
 #include <SMS/Strategic/TakeActor.hxx>
 
 class TLiveActor : public TTakeActor {
-
 public:
     TLiveActor(const char *);
     virtual ~TLiveActor();
@@ -81,25 +80,38 @@ public:
     u8 _E8;
     TMapCollisionManager *mCollisionManager;  // _EC
 
-    union {
-        u32 asU32;
-        struct {
-            u32 _00             : 7;
-            bool mIsSunken      : 1;
-            u32 _01             : 1;
-            bool mIsRide        : 1;
-            u32 _02             : 1;
-            bool mCanBeTaken    : 1;
-            u32 _03             : 2;
-            bool mCanTalk       : 1;
-            u32 _04             : 8;
-            bool mCullModel     : 1;
-            bool _004           : 1;
-            bool mHasPhysics    : 1;
-            u32 _05             : 1;
-            bool mClipFromScene : 1;
-            u32 _06             : 3;
-            bool mIsObjDead     : 1;
-        } asFlags;
+    struct {
+        bool unk_80000000               : 1;
+        bool unk_40000000               : 1;
+        bool mIsNPCThrowIgnored         : 1;
+        bool mIsNPCReleasingFromTaken   : 1;
+        bool mIsNPCRecoveringFromSunken : 1;
+        bool mIsNPCMadForced            : 1;
+        bool mIsNPCMad                  : 1;
+        bool mIsNPCCulled               : 1;
+        bool mIsSunken                  : 1;
+        bool mIsSinking                 : 1;
+        bool mIsTurnClockwise           : 1;
+        bool mCanBeTaken                : 1;
+        bool mIsTalking                 : 1;
+        bool mIsLongTalkInvariant       : 1;
+        bool mCanBeTalked               : 1;
+        bool mIsChildTanooki            : 1;
+        bool mIsResetToPosition         : 1;
+        bool mIsAsleep                  : 1;
+        bool unk_2000                   : 1;
+        bool unk_1000                   : 1;
+        bool mIsResetToGraph            : 1;
+        bool mIsShadowForced            : 1;
+        bool mInAreaCube                : 1;
+        bool mIsClippable               : 1;
+        bool mIsAirborne                : 1;
+        bool mIsDying                   : 1;
+        bool unk_20                     : 1;
+        bool mIsBound                   : 1;
+        bool mHasShadow                 : 1;
+        bool mIsClipped                 : 1;
+        bool mIsHidden                  : 1;
+        bool mIsDead                    : 1;
     } mStateFlags;
 };
