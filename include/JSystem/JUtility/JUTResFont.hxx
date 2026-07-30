@@ -11,7 +11,7 @@ class ResFONT {};
 
 class JUTResFont : public JUTFont {
 public:
-    JUTResFont(const u32 *, JKRArchive *);  // ResFont
+    JUTResFont(const ResFONT *, JKRArchive *);  // ResFont
     virtual ~JUTResFont();
 
     virtual void setGX();
