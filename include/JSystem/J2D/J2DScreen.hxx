@@ -6,9 +6,9 @@
 
 class J2DScreen : public J2DPane {
 public:
-    inline J2DScreen() : J2DPane(), mOverlayColor({0, 0, 0, 0}) {}
+    inline J2DScreen() : J2DPane(), mOverlayColor({0, 0, 0, 0}), _EC(0), _EE(0) {}
     inline J2DScreen(u16 id, u32 magic, const JUTRect &rect)
-        : J2DPane(id, magic, rect), mOverlayColor({0, 0, 0, 0}) {}
+        : J2DPane(id, magic, rect), mOverlayColor({0, 0, 0, 0}), _EC(0), _EE(0) {}
     ~J2DScreen() override;
 
     void drawSelf(int, int, Mtx *) override;
